@@ -85,14 +85,15 @@ class JoueurController implements ControllerProviderInterface {
     public function validFormUpdate(Application $app){
         $id=htmlentities($_POST['idJoueur']);
         
-            $date = $_POST['annee']."-".$_POST['mois']."-".$_POST['jour'];
-            $donnees = [
-                'nomJoueur' => htmlspecialchars($_POST['nomJoueur']),
-                'idClub' => htmlspecialchars($_POST['club']),
-                'prenomJoueur' => htmlspecialchars($_POST['prenomJoueur']),
-                'tailleJoueur' => htmlspecialchars($_POST['tailleJoueur']),
-                'dateNaissJoueur' => $date
-            ];
+        $date = $_POST['annee']."-".$_POST['mois']."-".$_POST['jour'];
+        $donnees = [
+            'idJoueur' => $id,
+            'nomJoueur' => htmlspecialchars($_POST['nomJoueur']),
+            'idClub' => htmlspecialchars($_POST['club']),
+            'prenomJoueur' => htmlspecialchars($_POST['prenomJoueur']),
+            'tailleJoueur' => htmlspecialchars($_POST['tailleJoueur']),
+            'dateNaissJoueur' => $date
+        ];
 
         $erreurs = $this->erreurs($donnees);
 
@@ -114,8 +115,8 @@ class JoueurController implements ControllerProviderInterface {
         $erreurs = [];
         if ((!preg_match("/^[A-Za-z ]{2,}/",$donnees['nomJoueur']))) $erreurs['nom']='Nom composé de 2 lettres minimum';
         if ((!preg_match("/^[A-Za-z ]{2,}/",$donnees['prenomJoueur']))) $erreurs['prenom']='Prénom composé de 2 lettres minimum';
-        //if ($donnees['club'] == 'a') $erreurs['club']='Sélectionner un club';  
-        if ((!preg_match("/^[0-9]{1,2}(\.[0-9]{,2})?/",$donnees['tailleJoueur']))) $erreurs['tailleJoueur']='La taille doit être de type XX.XX';     
+        if ($donnees['idClub'] == null) $erreurs['club']='Veuillez choisir un club !';
+        if ((!preg_match("/^[0-9]{0,2}(\.[0-9]{0,2})?$/",$donnees['tailleJoueur']))) $erreurs['tailleJoueur']='La taille doit être de type XX.XX';     
         return $erreurs;
     }
 
