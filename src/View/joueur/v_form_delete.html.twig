@@ -1,0 +1,19 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %}
+	<form method="post" action="{{ path("joueur.validFormDel") }}">
+		<div class="row">
+			<fieldset>
+				<legend>Delete un joueur</legend>
+				<input name="idJoueur"  type="hidden" value="{{donnees.idJoueur}}" />
+				<label>Voulez vous vraiment supprimer {{donnees.nomJoueur}} ?</label>
+                <label>Choix :
+                    <select name="choix">
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                    </select>
+                </label>
+				<input type="submit" name="supprimerProduit" value="Supprimer" />
+			</fieldset>
+		</div>
+	</form>
+{% endblock %}

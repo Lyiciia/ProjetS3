@@ -1,0 +1,28 @@
+<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area"> 
+      <li class="name"> 
+        <h1> <a href="">Sujet 4</a></h1>
+      </li> 
+      <li class="toggle-topbar menu-icon">
+        <a href="#"><span>Menu</span></a>
+      </li> 
+    </ul> 
+    <section class="top-bar-section"> 
+      <ul class="left">
+        <li class="divider"></li>
+        <li class="has-dropdown"><a href="#">Joueur</a> 
+          <ul class="dropdown">
+            <li><a href="{{ path('joueur.add') }}">Créer un joueur</a></li>
+            <li><a href="{{ path('joueur.show') }}">Afficher les joueurs (+Options)</a></li>
+          </ul>
+        </li>
+        <li class="divider"></li>
+        <li class="has-dropdown"><a href="#">Club</a> 
+          <ul class="dropdown">
+            <li><a href="{{ path('club.addC') }}">Créer un club</a></li>
+            <li><a href="{{ path('club.showC') }}">Afficher les clubs (+Options)</a></li>
+          </ul>
+        </li>  
+      </ul>
+    </section> 
+</nav>

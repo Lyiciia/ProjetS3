@@ -1,0 +1,30 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %}
+<div class="row">
+	<table>
+	    <caption>Liste des clubs</caption>
+		<thead>
+            <tr>
+				<th>ID</th>
+                <th>Nom</th>
+                <th>Ville</th>
+                <th>Opération</th>
+            </tr>
+		</thead>
+		<tbody>
+			{% for club in data if data is not empty %}
+				<tr>
+					<td>{{club.idClub}}</td>
+					<td>{{club.nomClub}}</td>
+					<td>{{club.villeClub}}</td>
+					<td>
+						<a href="{{ path('club.editC', {id: club.idClub}) }}" style="margin-right: 15px;">Modifier</a>
+						<a href="{{ path('club.deleteC', {id: club.idClub}) }}">Supprimer</a> 
+					</td>
+				</tr>
+			{% endfor %}
+		<tbody>
+	</table>
+	<a href="{{ path('joueur.add') }}"> Ajouter un Joueur </a>
+</div>
+{% endblock %}

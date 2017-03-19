@@ -1,0 +1,37 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %}
+<div class="row">
+	<table>
+	    <caption>Liste des joueurs</caption>
+		<thead>
+            <tr>
+				<th>ID</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Taille</th>
+                <th>Date de naissance</th>
+                <th>Club</th>
+                <th>Opération</th>
+            </tr>
+		</thead>
+		<tbody>
+			{% for joueur in data if data is not empty %}
+				<tr>
+					<td>{{joueur.idJoueur}}</td>
+					<td>{{joueur.nomJoueur}}</td>
+					<td>{{joueur.prenomJoueur}}</td>
+					<td>{{joueur.tailleJoueur}} m</td>
+					<td>{{joueur.dateNaissJoueur}}</td>
+					<td>{{joueur.nomClub}}</td>
+					<td>
+						<a href="{{ path('joueur.edit', {id: joueur.idJoueur}) }}" style="margin-right: 15px;">Modifier</a>
+						<a href="{{ path('joueur.delete', {id: joueur.idJoueur}) }}">Supprimer</a>
+					</td>
+				</tr>
+			{% endfor %}
+		<tbody>
+	</table>
+	<a href="{{ path('joueur.add') }}"> Ajouter un Joueur </a>
+</div>
+{% endblock %}
+

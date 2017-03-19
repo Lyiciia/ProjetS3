@@ -1,0 +1,70 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %}
+    <form method="post" action="{{ path("joueur.validFormAdd") }} ">
+        <div class="row">
+            <fieldset>
+                <legend>Créer un joueur</legend>
+                <label>Nom :
+                    <input name="nomJoueur"  type="text"  size="18" value="{{donnees.nomJoueur|default("")}}" />
+                    {% if erreurs.nom is defined %}
+                        <small class="error">{{erreurs.nom}}</small>
+                    {% endif %}
+                </label>
+
+                <label>Prénom :
+                    <input name="prenomJoueur"  type="text"  size="18" value="{{donnees.prenomJoueur|default("")}}" />
+                    {% if erreurs.prenom is defined %}
+                        <small class="error">{{erreurs.prenom}}</small>
+                    {% endif %}
+                </label>
+
+                <label>Taille :
+                    <input name="tailleJoueur"  type="text"  size="18"  value="{{donnees.tailleJoueur|default("")}}"/>
+                    {% if erreurs.tailleJoueur is defined %}
+                        <small class="error">{{erreurs.tailleJoueur}}</small>
+                    {% endif %}
+                </label>
+
+                <label>Date de naissance :<br>
+                    Année :
+                    <select name="annee" style="width:100px;">
+                        {% for i in 1950..2017 %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    Mois :
+                    <select name="mois" style="width:100px;">
+                        {% for i in 1..12 %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    Jour :
+                    <select name="jour" style="width:100px;">
+                        {% for i in 1..31 %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+
+                <label>Club :
+                    <select name="club">
+                        {% if  donnees.club is not defined or donnees.club is empty   %}
+                            <option value="">Veuillez sélectionner un club</option>
+                        {% endif %}
+                        {% for Club in club %}
+                            <option value="{{ Club.idClub }}"
+                                    {% if donnees.nomClub is defined and Club.idClub == donnees.idClub %}selected{% endif %}>
+                                {{ Club.nomClub }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    {% if erreurs.club is defined %}
+                        <small class="error">{{erreurs.club}}</small>
+                    {% endif %}
+                </label>
+
+                <input type="submit" name="creerJoueur" value="Créer" />
+            </fieldset>
+        </div>
+    </form>
+{% endblock %}
