@@ -1,7 +1,7 @@
 {% extends "v_layout.html.twig" %}
 {% block contenu %}
-<div class="row">
-	<table>
+<div class="container">
+	<table class="row small-6 small-offset-3" style="margin-top:25px;">
 	    <caption>Liste des clubs</caption>
 		<thead>
             <tr>
@@ -25,6 +25,6 @@
 			{% endfor %}
 		<tbody>
 	</table>
-	<a href="{{ path('club.addC') }}"> Ajouter un club </a>
+	<a href="{{ path('club.addC') }}"><button>Ajouter club</button></a>
 </div>
 {% endblock %}

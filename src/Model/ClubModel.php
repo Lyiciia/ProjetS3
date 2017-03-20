@@ -23,7 +23,7 @@ class ClubModel {
     public function getClub($id){
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
-            ->select('c.nomClub', 'c.villeClub')
+            ->select('c.idClub','c.nomClub', 'c.villeClub')
             ->from('club', 'c')
             ->where('c.idClub = :id')
             ->setParameter(':id', intval($id));

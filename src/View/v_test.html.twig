@@ -1,8 +1,9 @@
 {% extends "v_layout.html.twig" %}
 {% block contenu %}
 
-    <div class="container">
-        MA BITE
-    </div>
+	<div class="container">
+        <a href="{{ path('joueur.show') }}" class="small-offset-3"><button class="small-3">Joueurs</button></a>
+	    <a href="{{ path('club.showC') }}"><button class="small-3">Clubs</button></a>
+	</div>
 
 {% endblock %}

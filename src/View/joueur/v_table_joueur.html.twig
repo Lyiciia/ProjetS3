@@ -1,7 +1,7 @@
 {% extends "v_layout.html.twig" %}
 {% block contenu %}
-<div class="row">
-	<table>
+<div class="container">
+	<table class="row small-6 small-offset-3" style="margin-top: 25px;">
 	    <caption>Liste des joueurs</caption>
 		<thead>
             <tr>
@@ -31,7 +31,7 @@
 			{% endfor %}
 		<tbody>
 	</table>
-	<a href="{{ path('joueur.add') }}"> Ajouter un Joueur </a>
+	<a href="{{ path('joueur.add') }}"><button>Ajouter joueur</button></a>
 </div>
 {% endblock %}
 

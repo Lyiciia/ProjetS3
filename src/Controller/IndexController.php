@@ -26,6 +26,7 @@ class IndexController implements ControllerProviderInterface
         $index->match("/index", 'App\Controller\IndexController::index');
         $index->match("/info", 'App\Controller\IndexController::info')->bind('phpinfo');
         $index->put("/monForm1", 'App\Controller\IndexController::validMonForm')->bind('validForm');
+        $index->get('/', 'App\Controller\IndexController::index')->bind('index.root');
 
         return $index;
     }
