@@ -1,0 +1,25 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %}
+    <form method="post" action="{{ path("club.validFormAddC") }} ">
+        <div class="row">
+            <fieldset>
+                <legend>Créer un club</legend>
+                <label>Nom :
+                    <input name="nomClub"  type="text"  size="18" value="{{donnees.nomClub|default("")}}" />
+                    {% if erreurs.nomClub is defined %}
+                        <small class="error">{{erreurs.nomClub}}</small>
+                    {% endif %}
+                </label>
+
+                <label>Ville :
+                    <input name="villeClub"  type="text"  size="18" value="{{donnees.villeClub|default("")}}" />
+                    {% if erreurs.villeClub is defined %}
+                        <small class="error">{{erreurs.villeClub}}</small>
+                    {% endif %}
+                </label>
+
+                <input type="submit" name="creerClub" value="Créer" />
+            </fieldset>
+        </div>
+    </form>
+{% endblock %}
